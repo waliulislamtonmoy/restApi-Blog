@@ -19,3 +19,22 @@ export async function postLatest(){
         return  []
     }
 }
+
+export async function postByCategory(id){
+    let res= await axios.get(BASE_URL+"/post-list/"+id)
+    if(res.status===200){
+        return res.data
+    }else {
+        return  []
+    }
+}
+
+export async function postDetails(id){
+    let res= await axios.get(BASE_URL+"/post-details/"+id)
+    if(res.status===200){
+        return res.data
+    }else {
+        return  []
+    }
+}
+

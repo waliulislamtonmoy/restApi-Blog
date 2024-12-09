@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
-import layout from "../leyout/Layout.jsx";
-import Layout from "../leyout/Layout.jsx";
+
 import {Link} from "react-router-dom";
 import { postLatest} from "../ApiRequest/ApiRequest.jsx";
 import Loader from "../components/Loader.jsx";
 
 const Home = () => {
     const [post,setPost]=useState(null)
-    console.log(post)
     useEffect(()=>{
         (async ()=>{
             let res= await postLatest()
@@ -25,7 +23,7 @@ const Home = () => {
                         {post.map((item, index) => {
                             return (
 
-                                <Link key={index.toString()} to={""} className={"card w-100 glass"}>
+                                <Link key={index.toString()} to={"/details/"+item['id']} className={"card w-100 glass"}>
                                     <figure><img src={item['img']} alt={"images"}></img></figure>
                                     <div className={"card-body"}>
                                         <h2 className={"card-title"}>{item['title']}</h2>
@@ -43,3 +41,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

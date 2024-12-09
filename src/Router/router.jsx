@@ -4,6 +4,7 @@ import Home from "../pages/Home.jsx";
 import ByCategoryPage from "../pages/ByCategoryPage.jsx";
 import DetailsPage from "../pages/DetailsPage.jsx";
 
+
 export const router=createBrowserRouter([
     {
         path:"/",
@@ -11,17 +12,17 @@ export const router=createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Home></Home>
+                element:<Home />,
+            },
+            {
+                path:"/details/:id",
+                element:<DetailsPage></DetailsPage>,
             },
             {
                 path:"/byCategory/:categoryID",
-                element:<ByCategoryPage></ByCategoryPage>
+                element:<ByCategoryPage></ByCategoryPage>,
             },
-            {
-                path:"/details",
-                element:<DetailsPage></DetailsPage>
-            },
-        ]
 
+        ]
     },
 ])

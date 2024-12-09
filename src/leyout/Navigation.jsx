@@ -13,7 +13,7 @@ const Navigation = () => {
     },[])
     return (
         <div>
-            <div className="navbar shadow bg-base-100 fixed top-0 z-50">
+            <div className="navbar shadow bg-base-100 sticky top-0 z-20">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,12 +33,12 @@ const Navigation = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li className=""><NavLink to={"/"}>Home</NavLink></li>
+                            <li className="p-1"><NavLink to={"/"} >Home</NavLink></li>
                             {category.map((item, index) => {
                                 return (
 
-                                        <li className="p-1" key={index.toString()}><NavLink
-                                            to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
+                                    <li className="p-1" key={index.toString()}><NavLink
+                                        to={`/byCategory/${item.id}`}>{item['name']}</NavLink></li>
 
                                 )
                             })}
@@ -52,7 +52,7 @@ const Navigation = () => {
                         {category.map((item, index) => {
                             return (
 
-                                    <li key={index.toString()}><NavLink to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
+                                    <li key={index.toString()}><NavLink to={`/byCategory/${item.id}`}>{item['name']}</NavLink></li>
 
                             )
                         })}

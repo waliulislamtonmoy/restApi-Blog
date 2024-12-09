@@ -5,7 +5,10 @@ const Layout = () => {
     return (
         <div>
             <Navigation></Navigation>
-            <Outlet></Outlet>
+
+                <Outlet></Outlet>
+
+
         </div>
     );
 };
