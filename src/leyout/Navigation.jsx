@@ -1,6 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {postCategory} from "../ApiRequest/ApiRequest.jsx";
+import {NavLink} from "react-router-dom";
 
 const Navigation = () => {
+    const [category,setCategory]=useState([])
+    console.log(category)
+    useEffect(()=>{
+        (async ()=>{
+           let res= await postCategory()
+            setCategory(res)
+        })()
+    },[])
     return (
         <div>
             <div className="navbar shadow bg-base-100">
@@ -23,24 +33,29 @@ const Navigation = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
-                            <li><a>Item 2</a></li>
-                            <li><a>Item 3</a></li>
-                            <li><a>Item 4</a></li>
-                            <li><a>Item 5</a></li>
-                            <li><a>Item 6</a></li>
+                            <li className=""><NavLink to={"/"}>Home</NavLink></li>
+                            {category.map((item, index) => {
+                                return (
+                                    < >
+                                        <li className="p-1"><NavLink
+                                            to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
+                                    </>
+                                )
+                            })}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">BlogProject</a>
+                    <a href="/" className="btn btn-ghost text-xl">BlogProject</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                        <li><a>Item 2</a></li>
-                        <li><a>Item 3</a></li>
-                        <li><a>Item 4</a></li>
-                        <li><a>Item 5</a></li>
-                        <li><a>Item 6</a></li>
+                        <li className="p-1"><NavLink to={"/"}>Home</NavLink></li>
+                        {category.map((item, index) => {
+                            return (
+                                <>
+                                    <li><NavLink to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
+                                </>
+                            )
+                        })}
                     </ul>
                 </div>
 
