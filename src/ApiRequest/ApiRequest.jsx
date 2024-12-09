@@ -10,3 +10,12 @@ export async function postCategory(){
         return  []
     }
 }
+
+export async function postLatest(){
+    let res= await axios.get(BASE_URL+"/post-newest")
+    if(res.status===200){
+        return res.data
+    }else {
+        return  []
+    }
+}

@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Navigation = () => {
     const [category,setCategory]=useState([])
-    console.log(category)
+
     useEffect(()=>{
         (async ()=>{
            let res= await postCategory()
@@ -13,7 +13,7 @@ const Navigation = () => {
     },[])
     return (
         <div>
-            <div className="navbar shadow bg-base-100">
+            <div className="navbar shadow bg-base-100 fixed top-0 z-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,10 +36,10 @@ const Navigation = () => {
                             <li className=""><NavLink to={"/"}>Home</NavLink></li>
                             {category.map((item, index) => {
                                 return (
-                                    < >
-                                        <li className="p-1"><NavLink
+
+                                        <li className="p-1" key={index.toString()}><NavLink
                                             to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
-                                    </>
+
                                 )
                             })}
                         </ul>
@@ -51,9 +51,9 @@ const Navigation = () => {
                         <li className="p-1"><NavLink to={"/"}>Home</NavLink></li>
                         {category.map((item, index) => {
                             return (
-                                <>
-                                    <li><NavLink to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
-                                </>
+
+                                    <li key={index.toString()}><NavLink to={"/byCategory/" + item['id']}>{item['name']}</NavLink></li>
+
                             )
                         })}
                     </ul>
